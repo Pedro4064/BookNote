@@ -91,7 +91,14 @@ class TimeCapsule:
         location_color = 'gray'
 
         # Get a list of all title already on the page 
-        notion_titles = [child.title for child in self.page.children]
+        notion_titles = []
+        for child in self.page.children:
+            try:
+                notion_titles.append(child.title)
+            except:
+                continue 
+
+        print(notion_titles)
 
         for title in highlights:
             
@@ -148,7 +155,7 @@ class TimeCapsule:
 if __name__ == '__main__':
 
     vault = TimeCapsule()
-    vault.set_up_notion_credentials(token_v2='****', page_url="*****")
+    # vault.set_up_notion_credentials(token_v2='****', page_url="*****")
     vault.load_notion_credentials()
 
     highlights = vault.get_kindle_highlights()
