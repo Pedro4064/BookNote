@@ -99,8 +99,13 @@ def upload(capsule, all):
         capsule.upload_highlights(highlights)
     
     except NotionCredentialError:
-            click.echo('[ERROR] There was an error during the upload, make sure your config information is correct by running: notebook list config')
+            click.echo('[ERROR] There was an error during the upload, make sure your config information is correct by running: notebook list config.json')
 
+@cli.command()
+@click.argument('file')
+def list(file):
+    with open(file, 'r') as f:
+        click.echo(f.read())
 
 if __name__ == '__main__':
     cli()
