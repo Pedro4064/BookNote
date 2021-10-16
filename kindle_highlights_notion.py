@@ -49,20 +49,20 @@ class TimeCapsule:
             config_data[name] = value
             self.__write_file(self.config_file, config_data)
 
-    def style(self,name:str, value:str) -> None:
+    def style(self,element:str, variable:str, value:str) -> None:
         # First and foremost we need to check if we the style file is already in our system
         if (not self.__file_exists):
             self.__generate_style_file()
 
             data = self.__load_file(self.style_file)
-            data[name] = value
+            data[element][variable] = value
 
             self.__write_file(self.style_file, data)
         
         # If the config is already in the system, load it to change the data in it and save it back
         else:
             style_data = self.__load_file(self.style_file)
-            style_data[name] = value
+            style_data[element][variable] = value
             self.__write_file(self.config_file, style_data)
 
     def __file_exists(self, name:str) -> bool:

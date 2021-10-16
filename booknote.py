@@ -41,5 +41,50 @@ def config(capsule,name, value):
     """
     capsule.config(name, value)
 
+@cli.command()
+@click.argument('element')
+@click.argument('variable')
+@click.argument('value')
+@click.pass_obj
+def setstyle(capsule, element, variable ,value):
+    """Change the style variables for the Notion Page Formatting
+
+    
+    Elements
+
+    \b
+        title
+            The block for the books titles
+    \b  
+        quote
+            The block for the contentes of the kindle's highlights
+        
+        annotation
+            The block for other annotations, such as the highlights location in the book
+        
+    \b 
+
+    Variables 
+
+        There are 2 variables:
+
+    \b
+        color
+            The color of the block (gray|brown|orange|yellow|green|blue|purple|pink|red)
+    
+    \b
+        block.type
+            The type of block the element will be rendered as in the Notion page
+            (HeaderBlock|SubheaderBlock|SubsubheaderBlock|QuoteBlock|TextBlock|PageBlock|BulletedListBlock|TodoBlock|CalloutBlock|ToggleBlock)
+
+    Example
+
+    \b 
+        booknote setstyle title block.type HeaderBlock
+    """
+    capsule.style(element, variable, value)
+
+
+
 if __name__ == '__main__':
     cli()
