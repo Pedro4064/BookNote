@@ -89,8 +89,7 @@ def setstyle(capsule, element, variable ,value):
 @click.option('--all', default=False, help="Upload all the Kindle's Highlights, NOT only the new ones")
 @click.pass_obj
 def upload(capsule, all):
-    """Upload to Notion the Highlights on the kindle
-
+    """ Upload to Notion 
     """
     # Get the highlights on the system, and if the user wants to only get the new ones or all of them
     highlights = capsule.get_kindle_highlights(only_new = not all)
