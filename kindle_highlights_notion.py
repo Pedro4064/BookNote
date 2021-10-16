@@ -83,9 +83,9 @@ class TimeCapsule:
 
     def __generate_style_file(self) -> None:
             
-        data = {'title block': {'color':'pink', 'block type':'SubheaderBlock'},
-                'quote block': {'color':'default', 'block type':'QuoteBlock'},
-                'annotation block': {'color':'gray', 'block type':'BulletedListBlock'}}
+        data = {'title': {'color':'pink', 'block.type':'SubheaderBlock'},
+                'quote': {'color':'default', 'block.type':'QuoteBlock'},
+                'annotation': {'color':'gray', 'block.type':'BulletedListBlock'}}
 
         self.__write_file(file_name = self.style_file, data = data, overwrite=True)
          
@@ -157,14 +157,14 @@ class TimeCapsule:
         # Set the types of blocks
         types = {'HeaderBlock': HeaderBlock, 'SubheaderBlock': SubheaderBlock, 'SubsubheaderBlock': SubsubheaderBlock, 'QuoteBlock': QuoteBlock, 'TextBlock': TextBlock, 'PageBlock': PageBlock,'BulletedListBlock':BulletedListBlock ,'TodoBlock': TodoBlock, 'CalloutBlock': CalloutBlock, 'ToggleBlock': ToggleBlock}
         
-        header_type = types[self.style_values['title block']['block type']]
-        location_type = types[self.style_values['annotation block']['block type']]
-        quote_type = types[self.style_values['quote block']['block type']]
+        header_type = types[self.style_values['title']['block.type']]
+        location_type = types[self.style_values['annotation']['block.type']]
+        quote_type = types[self.style_values['quote']['block.type']]
         
         # Set the color of the blocks 
-        header_color = self.style_values['title block']['color']
-        location_color = self.style_values['annotation block']['color']
-        quote_color = self.style_values['quote block']['color']
+        header_color = self.style_values['title']['color']
+        location_color = self.style_values['annotation']['color']
+        quote_color = self.style_values['quote']['color']
 
         # Get a list of all title already on the page 
         notion_titles = []
@@ -188,7 +188,7 @@ class TimeCapsule:
                     divider_block = self.page.children.add_new(DividerBlock)
 
                     # Now, if the header block is either a page or a toggle, move the blocks to the correct location 
-                    if self.style_values['title block']['block type'] == 'ToggleBlock' or self.style_values['title block']['block type'] == 'PageBlock':
+                    if self.style_values['title']['block.type'] == 'ToggleBlock' or self.style_values['title']['block.type'] == 'PageBlock':
                         quote_block.move_to(header_block, "last-child")
                         page_info_block.move_to(header_block, "last-child")
                         divider_block.move_to(header_block, "last-child")
@@ -199,7 +199,7 @@ class TimeCapsule:
                 
             else:
                 self.title = title
-                # If it is not the first entry, we must find the block corresponding to the title block to that book
+                # If it is not the first entry, we must find the block corresponding to the title to that book
                 header_block = list(filter(self.__filter_children, self.page.children))[0]
 
                 # Now that we have the parent block, we can iterate through the quotes and add them
