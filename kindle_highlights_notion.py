@@ -51,7 +51,7 @@ class TimeCapsule:
 
     def style(self,element:str, variable:str, value:str) -> None:
         # First and foremost we need to check if we the style file is already in our system
-        if (not self.__file_exists):
+        if (not self.__file_exists(self.style_file)):
             self.__generate_style_file()
 
             data = self.__load_file(self.style_file)
@@ -63,7 +63,7 @@ class TimeCapsule:
         else:
             style_data = self.__load_file(self.style_file)
             style_data[element][variable] = value
-            self.__write_file(self.config_file, style_data)
+            self.__write_file(self.style_file, style_data)
 
     def __file_exists(self, name:str) -> bool:
         if (name not in os.listdir()):
@@ -226,10 +226,7 @@ class TimeCapsule:
 if __name__ == '__main__':
     
     vault = TimeCapsule()
-    vault.config('notion.v2token', '5d94679b2acadf4d2e73318f270dd22924fed088b893852deebdc00a08edae3e0f88beae6d1ae32a02796f1b21bf9d0775bdfce4d1f0c4db2fc3e4d427b8e8cbab12e3c07b87207d6042f1860025')
-    # vault.config('notion.page', 'https://www.notion.so/a-724ac4ea9f054051b377749bb610677f')
-    highlights = vault.get_kindle_highlights()
-    vault.upload_highlights(highlights)
+    vault.style('title', 'block.type', 'PageBlock')
 
     # # vault.set_up_notion_credentials(token_v2='****', page_url="*****")
     # vault.load_notion_credentials()
