@@ -1,6 +1,6 @@
 import click
 from click.decorators import pass_context
-from kindle_highlights_notion import TimeCapsule
+from kindle_highlights_notion import NotionCredentialError, TimeCapsule
 
 @click.group()
 @click.pass_context
@@ -12,7 +12,7 @@ def cli(ctx):
 @click.argument('name')
 @click.argument('value')
 @click.pass_obj
-def config(capsule,name, value):
+def config(capsule, name, value):
     """Change the configuration variables for the program
 
     
@@ -84,6 +84,20 @@ def setstyle(capsule, element, variable ,value):
     """
     capsule.style(element, variable, value)
 
+
+@cli.command()
+@click.option('--all', default=False, help="Upload all the Kindle's Highlights, NOT only the new ones")
+@click.pass_obj
+def upload(capsule, all):
+    # Get the highlights on the system, and if the user wants to only get the new ones or all of them
+    highlights = capsule.get_kindle_highlights(only_new = not all)
+
+    # Now try to upload
+    try: 
+        capsule.upload_highlights(highlights)
+    
+    except NotionCredentialError:
+            click.echo('[ERROR] There was an error during the upload, make sure your config information is correct by running: notebook list config')
 
 
 if __name__ == '__main__':
