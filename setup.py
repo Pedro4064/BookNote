@@ -20,6 +20,7 @@ setup(
     packages = find_packages(),
     install_requires = [requirements],
     python_requires='>=3.5',
+    include_package_data=True,
 
     classifiers=[
         "Programming Language :: Python :: 3.8",
