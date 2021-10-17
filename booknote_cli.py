@@ -1,6 +1,6 @@
 import click
 from click.decorators import pass_context
-from kindle_highlights_notion import NotionCredentialError, TimeCapsule
+from booknote.booknote import NotionCredentialError, TimeCapsule
 
 @click.group()
 @click.pass_context
