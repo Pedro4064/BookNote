@@ -65,12 +65,8 @@ class TimeCapsule:
             style_data[element][variable] = value
             self.__write_file(self.style_file, style_data)
 
-    def __file_exists(self, name:str) -> bool:
-        if (name not in os.listdir()):
-            return False
-        
-        else:
-            return True
+    def __file_exists(self, path_to_file:str) -> bool:
+        return os.path.exists(path_to_file)
         
     def __generate_config_file(self) -> None:
             
