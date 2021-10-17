@@ -24,7 +24,9 @@ class TimeCapsule:
 
         # Load the necessary information
         try:
+            # If we are able to load the config file, we can update the path to the kindle.log (since the user might want to keep else where)
             self.config_values = self.__load_file(self.config_file)
+            self.kindle_log = self.config_values['kindle.log']
         except:
             self.__generate_config_file()
         
