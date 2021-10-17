@@ -35,7 +35,7 @@ class TimeCapsule:
         
     def config(self,name:str, value:str) -> None:
         # First and foremost we need to check if we the config file is already in our system
-        if (not self.__file_exists):
+        if (not self.__file_exists(self.config_file)):
             self.__generate_config_file()
 
             data = self.__load_file(self.config_file)
