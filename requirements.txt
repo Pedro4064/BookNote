@@ -1,0 +1,8 @@
+notion==0.0.28
+requests
+commonmark
+bs4
+tzlocal
+python-slugify
+dictdiffer
+cached-property
