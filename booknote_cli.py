@@ -103,9 +103,25 @@ def upload(capsule, all):
 
 @cli.command()
 @click.argument('file')
-def list(file):
-    with open(file, 'r') as f:
-        click.echo(f.read())
+@click.pass_obj
+def list(capsule, file):
+    """List the contents of one of the internal files
+
+    \b
+        FILE (kindle.log | config | style)
+    """
+    # Set possible files
+    files = {'kindle.log': capsule.kindle_log, 'config':capsule.config_file, 'config.json':capsule.config_file, 'style':capsule.style_file, 'style.json':capsule.style_file}
+
+    # Check if the file passed as argument is one of them, if not exit with status code 1 and print help message
+    target_file = files.get(file)
+    if target_file == None:
+        click.echo('[ERROR] Target file not valid.')
+        click.echo(click.get_current_context().get_help())
+        exit(1)
+    else:
+        with open(target_file, 'r') as f:
+            click.echo(f.read())
 
 if __name__ == '__main__':
     cli()
