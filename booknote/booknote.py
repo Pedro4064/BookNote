@@ -1,6 +1,6 @@
 from notion.client import NotionClient
 from notion.block import BulletedListBlock, DividerBlock,HeaderBlock , SubheaderBlock, SubsubheaderBlock, QuoteBlock, TextBlock, TodoBlock, PageBlock, CalloutBlock, ToggleBlock
-from kindle_highlights import Highlights
+from booknote.kindle_highlights import Highlights
 
 from sys import platform
 import json
@@ -13,9 +13,9 @@ class TimeCapsule:
 
     def __init__(self):
         # Set basic variables
-        self.config_file = 'config.json'
-        self.style_file  = 'style.json'
-        self.kindle_log  =  'kindle.log'
+        self.config_file = './booknote/config/config.json'
+        self.style_file  = './booknote/config/style.json'
+        self.kindle_log  =  './booknote/config/kindle.log'
 
         # Set variables for future comparison
         self.logged_highlights = []
