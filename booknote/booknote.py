@@ -3,7 +3,7 @@ from notion.block import BulletedListBlock, DividerBlock,HeaderBlock , Subheader
 from booknote.kindle_highlights import Highlights
 
 from sys import platform
-import pkgutil
+import pkg_resources
 import json
 import os 
 
@@ -14,9 +14,9 @@ class TimeCapsule:
 
     def __init__(self):
         # Set basic variables
-        self.config_file = 'config/config.json'
-        self.style_file  = 'config/style.json'
-        self.kindle_log  =  'config/kindle.log'
+        self.config_file = pkg_resources.resource_filename(__name__,'config/config.json')
+        self.style_file  = pkg_resources.resource_filename(__name__,'config/style.json')
+        self.kindle_log  =  pkg_resources.resource_filename(__name__,'config/kindle.log')
 
         # Set variables for future comparison
         self.logged_highlights = []
