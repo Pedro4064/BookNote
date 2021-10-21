@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import os 
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -34,3 +35,6 @@ setup(
         booknote=booknote_cli:cli
     '''
 )
+
+# After Initial package setup create the booknote/ directory in ~/.config
+os.mkdir(os.path.expanduser("~") + "/.config/booknote")

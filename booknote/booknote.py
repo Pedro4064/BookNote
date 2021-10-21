@@ -13,10 +13,11 @@ class NotionCredentialError(Exception):
 class TimeCapsule:
 
     def __init__(self):
-        # Set basic variables
-        self.config_file = pkg_resources.resource_filename(__name__,'config/config.json')
-        self.style_file  = pkg_resources.resource_filename(__name__,'config/style.json')
-        self.kindle_log  =  pkg_resources.resource_filename(__name__,'config/kindle.log')
+        # Set basic path variables for the config files
+        base_path = os.path.expanduser("~")
+        self.config_file = base_path + '/.config/config.json'
+        self.style_file  = base_path + '/.config/style.json'
+        self.kindle_log  =  base_path + '/.config/kindle.log'
 
         # Set variables for future comparison
         self.logged_highlights = []
@@ -226,7 +227,6 @@ if __name__ == '__main__':
     
     vault = TimeCapsule()
     vault.style('title', 'block.type', 'PageBlock')
-
     # # vault.set_up_notion_credentials(token_v2='****', page_url="*****")
     # vault.load_notion_credentials()
 
