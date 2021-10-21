@@ -15,9 +15,9 @@ class TimeCapsule:
     def __init__(self):
         # Set basic path variables for the config files
         base_path = os.path.expanduser("~")
-        self.config_file = base_path + '/.config/config.json'
-        self.style_file  = base_path + '/.config/style.json'
-        self.kindle_log  =  base_path + '/.config/kindle.log'
+        self.config_file = base_path + '/.config/booknote/config.json'
+        self.style_file  = base_path + '/.config/booknote/style.json'
+        self.kindle_log  =  base_path + '/.config/booknote/kindle.log'
 
         # Set variables for future comparison
         self.logged_highlights = []
@@ -36,6 +36,10 @@ class TimeCapsule:
             self.style_values = self.__load_file(self.style_file)
         except:
             self.__generate_style_file()
+        
+        # Also check if the kindle file was created, if not create it
+        if (not os.path.exists(self.kindle_log)):
+            self.__write_file(self.kindle_log, [])
         
     def config(self,name:str, value:str) -> None:
         # First and foremost we need to check if we the config file is already in our system
