@@ -1,5 +1,3 @@
-import json 
-
 class Highlights:
     
     def get_kindle_highlights(self, kindle_path:str = '/Volumes/Kindle') -> list:

@@ -3,7 +3,6 @@ from notion.block import BulletedListBlock, DividerBlock,HeaderBlock , Subheader
 from booknote.kindle_highlights import Highlights
 
 from sys import platform
-import pkg_resources
 import json
 import os 
 
