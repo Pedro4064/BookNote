@@ -97,7 +97,7 @@ class TimeCapsule:
         with open(file_name, 'r') as f:
             return json.loads(f.read())
 
-    def __write_file(self, file_name:str, data:dict, overwrite:bool = True):
+    def __write_file(self, file_name:str, data:dict, overwrite:bool = True) -> None:
             mode = 'w' if overwrite else 'a'
 
             with open(file_name, mode) as f:
@@ -149,14 +149,14 @@ class TimeCapsule:
         # And at last we can save the data to the kindle file 
         self.__write_file(self.kindle_log, self.kindle_highlights)
 
-    def __initialize_notion_api(self):
+    def __initialize_notion_api(self) -> None:
         try:
             self.client = NotionClient(token_v2 = self.config_values['notion.v2token'])
             self.page = self.client.get_block(self.config_values['notion.page'])
         except:
             raise NotionCredentialError()
 
-    def __populate_notion(self, highlights:dict):
+    def __populate_notion(self, highlights:dict) -> None:
         
         # Set the types of blocks
         types = {'HeaderBlock': HeaderBlock, 'SubheaderBlock': SubheaderBlock, 'SubsubheaderBlock': SubsubheaderBlock, 'QuoteBlock': QuoteBlock, 'TextBlock': TextBlock, 'PageBlock': PageBlock,'BulletedListBlock':BulletedListBlock ,'TodoBlock': TodoBlock, 'CalloutBlock': CalloutBlock, 'ToggleBlock': ToggleBlock}
