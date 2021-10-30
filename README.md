@@ -4,7 +4,7 @@
 BookNote is simple yet configurable CLI tool written in python that allows you to upload your kindle highlights to a Notion page.
 
 # Customization
-You are able to customize both which the type and the color of each component block, those being:
+You are able to customize both the type and the color of each component block, those being:
 
 - The `Title` of the book: Which is the parent block for all highlights from the book (can be a page, toggle, Header, ...).
 
@@ -23,7 +23,7 @@ The easiest way to install is to use pip and git as follows:
 ```bash
 pip3 install git+https://github.com/Pedro4064/Kindle_Notion.git@master
 ``` 
-And that will install everything need to run BookNote.
+And that will install everything needed to run BookNote.
 
 ## Configuration
 By default the python package will create a folder in you `.config` directory named `booknote` and inside will store all the necessary files, those being:
@@ -62,7 +62,7 @@ As state before, this files contains all the style references for each element (
 
 
 ### Changing Styles
-If you want to change to a new VALUE from a VARIABLE from an ELEMENT run:
+If you want to change a VARIABLE from an ELEMENT to a new VALUE:
 ```bash
 booknote setstyle ELEMENT VARIABLE VALUE
 ```
