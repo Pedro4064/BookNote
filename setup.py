@@ -19,7 +19,6 @@ setup(
     url = 'https://github.com/Pedro4064/Kindle_Notion',
     py_modules = ['booknote_cli', 'booknote'],
     packages = find_packages(),
-    package_data={'':['booknote/config/*.json']},
     install_requires = [requirements],
     python_requires='>=3.5',
     include_package_data=True,
