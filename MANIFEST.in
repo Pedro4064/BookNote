@@ -1,2 +1,0 @@
-include booknote/config/*.json
-include booknote/config/*.log
