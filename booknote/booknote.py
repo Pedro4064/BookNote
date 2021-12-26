@@ -190,8 +190,11 @@ class TimeCapsule:
             # only keep the new data during the list comprehention 
             self.new_highlights = [highlight for highlight in self.kindle_highlights if highlight not in self.logged_highlights] 
 
-            
-        return self.kindle_highlights if only_new else self.kindle_highlights
+            # Return only the new highlight 
+            return self.new_highlights
+        
+        # Else return all the highlight 
+        return self.kindle_highlights 
 
     def upload_highlights(self, highlights:list)-> None:
         """ Upload to Notion the `highlights` from the kindle
