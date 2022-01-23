@@ -37,7 +37,7 @@ setup(
 
 # After Initial package setup create the booknote/ directory in ~/.config
 try:
-    os.mkdir(os.path.expanduser("~") + "/.config/booknote")
+    os.makedirs(os.path.expanduser("~") + "/.config/booknote")
 except FileExistsError:
     print("[WARNIGN] ~/.config/booknote directory already exists")
 except Exception as e:
